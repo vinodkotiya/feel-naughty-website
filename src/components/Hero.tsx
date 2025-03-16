@@ -27,12 +27,18 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center texture-bg" id="home">
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-20"
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&q=80')" 
-        }}
-      />
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          className="absolute w-full h-full object-cover opacity-30"
+        >
+          <source src="https://static.videezy.com/system/resources/previews/000/034/098/original/pouring.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
+      </div>
       <div className="container mx-auto px-4 pt-20 z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="reveal-section">

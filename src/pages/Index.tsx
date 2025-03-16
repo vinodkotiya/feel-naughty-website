@@ -8,6 +8,7 @@ import About from '@/components/About';
 import Wholesale from '@/components/Wholesale';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
+import AnimatedLeaves from '@/components/AnimatedLeaves';
 
 const Index = () => {
   useEffect(() => {
@@ -29,18 +30,27 @@ const Index = () => {
       });
     });
     
-    // Initialize reveal animations
+    // Enhanced reveal animations with different entrance effects
     const revealElements = document.querySelectorAll('.reveal-section');
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
+          
+          // Add additional animation class based on data attribute
+          const animType = entry.target.getAttribute('data-anim');
+          if (animType) {
+            entry.target.classList.add(animType);
+          }
         }
       });
     }, { threshold: 0.1 });
     
-    revealElements.forEach(element => {
+    revealElements.forEach((element, index) => {
+      // Add staggered delay to elements
+      const delay = 0.1 + (index % 3) * 0.15; // Stagger by groups of 3
+      element.style.transitionDelay = `${delay}s`;
       observer.observe(element);
     });
     
@@ -54,6 +64,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
+      <AnimatedLeaves />
       <Hero />
       <ProductShowcase />
       <Benefits />

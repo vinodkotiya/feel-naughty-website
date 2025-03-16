@@ -23,5 +23,11 @@ if (!fs.existsSync(exportDir)) {
 const distDir = path.resolve(__dirname, 'dist');
 fs.cpSync(distDir, exportDir, { recursive: true });
 
+// Create a resources directory for videos if it doesn't exist
+const resourcesDir = path.resolve(exportDir, 'resources');
+if (!fs.existsSync(resourcesDir)) {
+  fs.mkdirSync(resourcesDir);
+}
+
 console.log('Static HTML export complete! Files are in the static-export directory.');
 console.log('To view the static site, you can open static-export/index.html in your browser.');

@@ -64,6 +64,48 @@
   @apply opacity-100 translate-y-0;
 }
 
+/* Enhanced scroll animations */
+.reveal-section[data-anim="fade-in-right"] {
+  @apply translate-x-16 translate-y-0;
+}
+
+.reveal-section[data-anim="fade-in-right"].active {
+  @apply translate-x-0;
+}
+
+.reveal-section[data-anim="fade-in-left"] {
+  @apply -translate-x-16 translate-y-0;
+}
+
+.reveal-section[data-anim="fade-in-left"].active {
+  @apply translate-x-0;
+}
+
+.reveal-section[data-anim="zoom-in"] {
+  @apply scale-95 opacity-0;
+}
+
+.reveal-section[data-anim="zoom-in"].active {
+  @apply scale-100 opacity-100;
+}
+
+/* Floating animation for leaves */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
 .btn-primary {
   @apply bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2;
 }
