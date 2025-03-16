@@ -49,8 +49,10 @@ const Index = () => {
     
     revealElements.forEach((element, index) => {
       // Add staggered delay to elements
-      const delay = 0.1 + (index % 3) * 0.15; // Stagger by groups of 3
-      element.style.transitionDelay = `${delay}s`;
+      const delay = 0.1 + (index % 3) * 0.15; // Stagger by groups of
+      if (element instanceof HTMLElement) {
+        element.style.transitionDelay = `${delay}s`;
+      }
       observer.observe(element);
     });
     
